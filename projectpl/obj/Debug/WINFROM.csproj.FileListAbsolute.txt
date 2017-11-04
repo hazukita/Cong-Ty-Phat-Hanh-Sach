@@ -1,0 +1,5 @@
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\projectpl\bin\Debug\projectpl.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\projectpl\bin\Debug\projectpl.pdb
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\projectpl\obj\Debug\WINFROM.csprojResolveAssemblyReference.cache
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\projectpl\obj\Debug\projectpl.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\projectpl\obj\Debug\projectpl.pdb

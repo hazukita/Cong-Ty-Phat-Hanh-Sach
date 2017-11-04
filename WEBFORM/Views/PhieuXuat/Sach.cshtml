@@ -1,0 +1,25 @@
+﻿@model List<MODEL.book>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã</th>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>S.Lương</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr data-id="@item.ma">
+                <td>@item.ma</td>
+                <td>@item.ten</td>
+                <td>@item.giaxuat</td>
+                <td>@item.sl</td>
+                <td><a class="btn btn-success add-sach">add</a></td>
+            </tr>
+        }
+        
+    </tbody>
+</table>

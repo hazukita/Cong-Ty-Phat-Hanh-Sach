@@ -1,0 +1,83 @@
+﻿@model PagedList.IPagedList<MODEL.phieuxuat>
+@using PagedList.Mvc;
+@{ 
+    int stt = 1;
+}
+<div>
+@Html.PagedListPager(Model, page => Url.Action("Index", new {
+
+    page,
+    id_dl = ViewBag.s.id_dl,
+    nguoinhan = ViewBag.s.nguoinhan,
+    nguoigiao = ViewBag.s.nguoigiao,
+    ngaytu = ViewBag.s.ngaytu,
+    ngayden = ViewBag.s.ngayden,
+    tientu = ViewBag.s.tientu,
+    tienden = ViewBag.s.tienden,
+    id = ViewBag.s.id,
+
+}), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "tablephieunhap",
+    OnSuccess = "onAjaxSuccess",
+    OnFailure = "onAjaxFailure"
+}))
+</div>
+
+<table class="table table-bordered dataTable" width="100%" id="dataTable" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+    <thead>
+        <tr role="row">
+        <tr>
+            <th>STT</th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().nguoitao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().nguoigia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().id_dl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().giatri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().ngayxuat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().hanthanhtoan)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr role="row" class="even">
+                <td>@(stt++)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nguoitao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nguoigia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dl.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.giatri)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ngayxuat, "{0:dd/MM/yyyy}")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hanthanhtoan.Value)
+                </td>
+                <td>
+                    @Html.ActionLink("Xem", "Detail", new { id = item.id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

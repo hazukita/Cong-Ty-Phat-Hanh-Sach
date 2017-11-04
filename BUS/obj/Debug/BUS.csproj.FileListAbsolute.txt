@@ -1,0 +1,20 @@
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\BUS\bin\Debug\BUS.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\BUS\bin\Debug\BUS.pdb
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\BUS\obj\Debug\BUS.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\BUS\obj\Debug\BUS.pdb
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\BUS\bin\Debug\DAL.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\BUS\bin\Debug\MODEL.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\BUS\bin\Debug\DAL.pdb
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\BUS\bin\Debug\MODEL.pdb
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\BUS\bin\Debug\EntityFramework.xml
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\BUS\bin\Debug\BUS.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\BUS\bin\Debug\BUS.pdb
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\BUS\bin\Debug\DAL.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\BUS\bin\Debug\MODEL.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\BUS\bin\Debug\DAL.pdb
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\BUS\bin\Debug\MODEL.pdb
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\BUS\bin\Debug\EntityFramework.xml
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\BUS\obj\Debug\BUS.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\BUS\obj\Debug\BUS.pdb

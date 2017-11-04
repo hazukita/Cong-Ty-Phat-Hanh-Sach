@@ -1,0 +1,10 @@
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\CODE\bin\Debug\CODE.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\CODE\bin\Debug\CODE.pdb
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\CODE\obj\Debug\CODE.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\CODE\obj\Debug\CODE.pdb
+C:\Users\thinh\Documents\Visual Studio 2015\Projects\projectpl\CODE\obj\Debug\CODE.csprojResolveAssemblyReference.cache
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\CODE\bin\Debug\CODE.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\CODE\bin\Debug\CODE.pdb
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\CODE\obj\Debug\CODE.csprojResolveAssemblyReference.cache
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\CODE\obj\Debug\CODE.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\CODE\obj\Debug\CODE.pdb

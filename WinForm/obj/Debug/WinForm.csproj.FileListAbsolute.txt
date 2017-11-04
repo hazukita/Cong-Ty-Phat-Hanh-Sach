@@ -1,0 +1,44 @@
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\WinForm.exe.config
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\WinForm.exe
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\WinForm.pdb
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\obj\Debug\WinForm.csprojResolveAssemblyReference.cache
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\obj\Debug\WinForm.Form1.resources
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\obj\Debug\WinForm.FormSach.resources
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\obj\Debug\WinForm.Properties.Resources.resources
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\obj\Debug\WinForm.csproj.GenerateResource.Cache
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\obj\Debug\WinForm.exe
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\obj\Debug\WinForm.pdb
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\BUS.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\MODEL.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\DAL.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\EntityFramework.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\BUS.pdb
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\MODEL.pdb
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\DAL.pdb
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\EntityFramework.xml
+C:\Users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\thinh\documents\visual studio 2015\Projects\projectpl\WinForm\obj\Debug\WinForm.FormDaiLy.resources
+C:\Users\thinh\Documents\Visual Studio 2015\Projects\projectpl\WinForm\obj\Debug\WinForm.thongke.resources
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\WinForm.exe.config
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\obj\Debug\WinForm.exe
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\obj\Debug\WinForm.pdb
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\WinForm.exe
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\WinForm.pdb
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\BUS.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\EntityFramework.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\EntityFramework.SqlServer.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\MODEL.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\DAL.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\BUS.pdb
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\MODEL.pdb
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\EntityFramework.xml
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\EntityFramework.SqlServer.xml
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\bin\Debug\DAL.pdb
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\obj\Debug\WinForm.csprojResolveAssemblyReference.cache
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\obj\Debug\WinForm.Form1.resources
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\obj\Debug\WinForm.FormDaiLy.resources
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\obj\Debug\WinForm.FormSach.resources
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\obj\Debug\WinForm.Properties.Resources.resources
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\obj\Debug\WinForm.thongke.resources
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\WinForm\obj\Debug\WinForm.csproj.GenerateResource.Cache

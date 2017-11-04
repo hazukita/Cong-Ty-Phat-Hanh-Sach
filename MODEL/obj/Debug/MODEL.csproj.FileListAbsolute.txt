@@ -1,0 +1,20 @@
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\MODEL\bin\Debug\MODEL.dll.config
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\MODEL\bin\Debug\MODEL.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\MODEL\bin\Debug\MODEL.pdb
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\MODEL\bin\Debug\EntityFramework.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\MODEL\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\MODEL\bin\Debug\EntityFramework.xml
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\MODEL\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\MODEL\obj\Debug\MODEL.dll
+c:\users\thinh\documents\visual studio 2015\Projects\projectpl\MODEL\obj\Debug\MODEL.pdb
+C:\Users\thinh\documents\visual studio 2015\Projects\projectpl\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\MODEL\bin\Debug\MODEL.dll.config
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\MODEL\bin\Debug\MODEL.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\MODEL\bin\Debug\MODEL.pdb
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\MODEL\bin\Debug\EntityFramework.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\MODEL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\MODEL\bin\Debug\EntityFramework.xml
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\MODEL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\MODEL\obj\Debug\MODEL.dll
+D:\Tai lieu\Hoc\(N)Xay dung phan mem theo mo hinh phan lop\projectpl\MODEL\obj\Debug\MODEL.pdb

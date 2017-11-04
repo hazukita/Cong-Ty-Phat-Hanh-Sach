@@ -1,0 +1,171 @@
+﻿@model PagedList.IPagedList<MODEL.phieuxuat>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int stt = 1;
+    var ngaytu = "";
+    var ngayden = "";
+    if (ViewBag.s.ngaytu != null)
+    {
+        ngaytu = ViewBag.s.ngaytu.ToString("yyyy-MM-dd");
+    }
+
+    if (ViewBag.s.ngayden != null)
+    {
+        ngayden = ViewBag.s.ngayden.ToString("yyyy-MM-dd");
+    }
+
+}
+@section css{
+    <style>
+        .pagination li{
+            margin:10px;
+        }
+    </style>
+}
+@section js{
+    <script>
+        var dt  = {
+            khoitao: function () {
+                dt.dangki();
+            },
+            dangki: function () {
+                $("#submitform").off("click").on("click", function () {
+                    var frm = $("#formseach");
+                    $.ajax({
+                        url: frm.attr("action"),
+                        type: frm.attr("method"),
+                        data: frm.serialize(),
+                        dataType: "html",
+                        success: function (data) {
+                            $("#tablephieunhap").html(data);
+                        }
+                    })
+                });
+            }
+        }
+        dt.khoitao();
+    </script>
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/PhieuXuat/Index">Danh Sách</a>
+    </li>
+    <li class="breadcrumb-item active"></li>
+</ol>
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i>
+        Thao tác
+    </div>
+    <div class="card-body">
+       <div class="row">
+          <div class="col-md-12">
+    @using (Ajax.BeginForm("index", new AjaxOptions()
+    {
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "tablephieunhap"
+    }))
+    {
+        <div class="col-md-12">
+            <div class="row">
+                <div class="form-inline col-md-4">
+                    <label class="col-md-3">Mã</label>
+                    <div class="col-md-9">
+                        <input type="text"  class="form-control" name="id" value="@ViewBag.s.id" id="id" />
+                    </div>
+                </div>
+                <div class="form-inline col-md-4">
+                    <label class="col-md-3">T.Ngày</label>
+                    <div class="col-md-9">
+                        <input type="date" class="form-control"  name="ngaytu" value="@ngaytu" id="ngaytu" />
+                    </div>
+                </div>
+                <div class="form-inline col-md-4">
+                    <label class="col-md-3">Đ.Ngày</label>
+                    <div class="col-md-9">
+                        <input type="date" name="ngayden" class="form-control" value="@ngayden" id="ngayden" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-inline col-md-4">
+                    <label class="col-md-3">Đại lý</label>
+                    <div class="col-md-9">
+                        @Html.DropDownList("id_dl", null, "Chọn đại lý", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-inline col-md-4">
+                    <label class="col-md-3">T.từ</label>
+                    <div class="col-md-9">
+                        <input type="number" name="tientu" class="form-control" value="@ViewBag.s.tientu" id="tientu" />
+                    </div>
+                </div>
+                <div class="form-inline col-md-4">
+                    <label class="col-md-3">T.Đến</label>
+                    <div class="col-md-9">
+                        <input type="number" name="tienden" class="form-control" value="@ViewBag.s.tienden" id="tienden" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-inline col-md-4">
+                    <label class="col-md-3">N.Giao</label>
+                    <div class="col-md-9">
+                        <input type="text" name="nguoigiao"  class="form-control" value="@ViewBag.s.nguoigiao" id="nguoigiao" />
+                    </div>
+                </div>
+                <div class="form-inline col-md-4">
+                    <label class="col-md-3">N.Nhận</label>
+                    <div class="col-md-9">
+                        <input type="text" name="nguoinhan" class="form-control" value="@ViewBag.s.nguoinhan" id="nguoinhan" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12" style="text-align:center">
+                    <input type="submit" value="Tìm kiếm"  class="btn btn-success"/>
+                    <a href="/PhieuXuat/Create" class="btn btn-primary">Tạo</a>
+                </div>
+               
+            </div>
+        </div>
+
+    }
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i>
+        Danh sách
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                <div class="row">
+                    <div class="col-sm-12" id="tablephieunhap">
+
+                       @Html.Partial("list",Model)
+                       
+                      
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-5">
+
+                    </div>
+                    <div class="col-sm-12 col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

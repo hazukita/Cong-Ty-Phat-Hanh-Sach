@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7d133b5bdfe64076bf9821eab10a76ea" Name="Diagram1">
+        <EntityTypeShape EntityType="CTyPHSachModel.Agencies" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTyPHSachModel.BestSellers" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTyPHSachModel.Books" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTyPHSachModel.Categories" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTyPHSachModel.Debts" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTyPHSachModel.DeliveryDetails" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTyPHSachModel.DeliveryNotes" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTyPHSachModel.Payments" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTyPHSachModel.Publishers" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTyPHSachModel.ReceiptDetails" Width="1.5" PointX="8.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTyPHSachModel.ReceiptNotes" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTyPHSachModel.PaymentDetails" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="CTyPHSachModel.FK_BestSellers_Agencies" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_Debts_Agencies" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_DeliveryNotes_Agencies" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_BestSellers_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_Books_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_Books_Publishers" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_DeliveryDetails_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_PaymentDetails_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_ReceiptDetails_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_DeliveryNotes_Debts" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_DeliveryDetails_DeliveryNotes" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_PaymentDetails_Payments" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_Payments_ReceiptNotes" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_ReceiptNotes_Publishers" ManuallyRouted="false" />
+        <AssociationConnector Association="CTyPHSachModel.FK_ReceiptDetails_ReceiptNotes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

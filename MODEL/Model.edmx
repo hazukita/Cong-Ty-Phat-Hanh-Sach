@@ -1,0 +1,988 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CTyPHSachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agencies">
+          <Key>
+            <PropertyRef Name="AgencyID" />
+          </Key>
+          <Property Name="AgencyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="agencyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="agencyAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="indebted" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="maxdebt" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="BestSellers">
+          <Key>
+            <PropertyRef Name="BookID" />
+            <PropertyRef Name="AgencyID" />
+          </Key>
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="AgencyID" Type="int" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="author" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PublisherID" Type="int" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="receiptPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="255" />
+          <Property Name="status" Type="int" />
+          <Property Name="img" Type="image" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Debts">
+          <Key>
+            <PropertyRef Name="DebtID" />
+          </Key>
+          <Property Name="DebtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateCreated" Type="date" Nullable="false" />
+          <Property Name="creatorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_dl" Type="int" Nullable="false" />
+          <Property Name="DeliveryNoteID" Type="int" Nullable="false" />
+          <Property Name="thanhtoan" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="DeliveryDetails">
+          <Key>
+            <PropertyRef Name="DeliveryNoteID" />
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="DeliveryNoteID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeliveryNotes">
+          <Key>
+            <PropertyRef Name="DeliveryNoteID" />
+          </Key>
+          <Property Name="DeliveryNoteID" Type="int" Nullable="false" />
+          <Property Name="deliverDateCreated" Type="date" Nullable="false" />
+          <Property Name="receiverName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="deliverName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AgencyID" Type="int" Nullable="false" />
+          <Property Name="totalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="debt" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="endeliverdate" Type="date" />
+          <Property Name="thanhtoan" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTyPHSach.dbo.PaymentDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PaymentDetails">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+            <PropertyRef Name="BookID" />
+            <PropertyRef Name="amount" />
+            <PropertyRef Name="price" />
+          </Key>
+          <Property Name="PaymentID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateCreated" Type="date" Nullable="false" />
+          <Property Name="creatorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReceiptNoteID" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Publishers">
+          <Key>
+            <PropertyRef Name="PublisherID" />
+          </Key>
+          <Property Name="PublisherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="publisherName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="publisherAdd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="publisherTel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="publisherAccountID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReceiptDetails">
+          <Key>
+            <PropertyRef Name="ReceiptNoteID" />
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="ReceiptNoteID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="receiptAmount" Type="int" Nullable="false" />
+          <Property Name="totalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReceiptNotes">
+          <Key>
+            <PropertyRef Name="ReceiptNoteID" />
+          </Key>
+          <Property Name="ReceiptNoteID" Type="int" Nullable="false" />
+          <Property Name="receiptDateCreated" Type="date" Nullable="false" />
+          <Property Name="PublisherID" Type="int" Nullable="false" />
+          <Property Name="senderName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="receiptName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="totalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="subid" Type="int" />
+        </EntityType>
+        <Association Name="FK_BestSellers_Agencies">
+          <End Role="Agencies" Type="Self.Agencies" Multiplicity="1" />
+          <End Role="BestSellers" Type="Self.BestSellers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agencies">
+              <PropertyRef Name="AgencyID" />
+            </Principal>
+            <Dependent Role="BestSellers">
+              <PropertyRef Name="AgencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BestSellers_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="BestSellers" Type="Self.BestSellers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="BestSellers">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Publishers">
+          <End Role="Publishers" Type="Self.Publishers" Multiplicity="0..1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publishers">
+              <PropertyRef Name="PublisherID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="PublisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Debts_Agencies">
+          <End Role="Agencies" Type="Self.Agencies" Multiplicity="1" />
+          <End Role="Debts" Type="Self.Debts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agencies">
+              <PropertyRef Name="AgencyID" />
+            </Principal>
+            <Dependent Role="Debts">
+              <PropertyRef Name="id_dl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryDetails_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="DeliveryDetails" Type="Self.DeliveryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="DeliveryDetails">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryDetails_DeliveryNotes">
+          <End Role="DeliveryNotes" Type="Self.DeliveryNotes" Multiplicity="1" />
+          <End Role="DeliveryDetails" Type="Self.DeliveryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryNotes">
+              <PropertyRef Name="DeliveryNoteID" />
+            </Principal>
+            <Dependent Role="DeliveryDetails">
+              <PropertyRef Name="DeliveryNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryNotes_Agencies">
+          <End Role="Agencies" Type="Self.Agencies" Multiplicity="1" />
+          <End Role="DeliveryNotes" Type="Self.DeliveryNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agencies">
+              <PropertyRef Name="AgencyID" />
+            </Principal>
+            <Dependent Role="DeliveryNotes">
+              <PropertyRef Name="AgencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryNotes_Debts">
+          <End Role="DeliveryNotes" Type="Self.DeliveryNotes" Multiplicity="1" />
+          <End Role="Debts" Type="Self.Debts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryNotes">
+              <PropertyRef Name="DeliveryNoteID" />
+            </Principal>
+            <Dependent Role="Debts">
+              <PropertyRef Name="DeliveryNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_Payments">
+          <End Role="Payments" Type="Self.Payments" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payments">
+              <PropertyRef Name="PaymentID" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_ReceiptNotes">
+          <End Role="ReceiptNotes" Type="Self.ReceiptNotes" Multiplicity="1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptNotes">
+              <PropertyRef Name="ReceiptNoteID" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="ReceiptNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptDetails_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptDetails_ReceiptNotes">
+          <End Role="ReceiptNotes" Type="Self.ReceiptNotes" Multiplicity="1" />
+          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptNotes">
+              <PropertyRef Name="ReceiptNoteID" />
+            </Principal>
+            <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="ReceiptNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptNotes_Publishers">
+          <End Role="Publishers" Type="Self.Publishers" Multiplicity="1" />
+          <End Role="ReceiptNotes" Type="Self.ReceiptNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publishers">
+              <PropertyRef Name="PublisherID" />
+            </Principal>
+            <Dependent Role="ReceiptNotes">
+              <PropertyRef Name="PublisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CTyPHSachModelStoreContainer">
+          <EntitySet Name="Agencies" EntityType="Self.Agencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BestSellers" EntityType="Self.BestSellers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Debts" EntityType="Self.Debts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryDetails" EntityType="Self.DeliveryDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryNotes" EntityType="Self.DeliveryNotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publishers" EntityType="Self.Publishers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptNotes" EntityType="Self.ReceiptNotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PaymentDetails].[PaymentID] AS [PaymentID], 
+    [PaymentDetails].[BookID] AS [BookID], 
+    [PaymentDetails].[amount] AS [amount], 
+    [PaymentDetails].[price] AS [price]
+    FROM [dbo].[PaymentDetails] AS [PaymentDetails]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BestSellers_Agencies" Association="Self.FK_BestSellers_Agencies">
+            <End Role="Agencies" EntitySet="Agencies" />
+            <End Role="BestSellers" EntitySet="BestSellers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BestSellers_Books" Association="Self.FK_BestSellers_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="BestSellers" EntitySet="BestSellers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Categories" Association="Self.FK_Books_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Publishers" Association="Self.FK_Books_Publishers">
+            <End Role="Publishers" EntitySet="Publishers" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Debts_Agencies" Association="Self.FK_Debts_Agencies">
+            <End Role="Agencies" EntitySet="Agencies" />
+            <End Role="Debts" EntitySet="Debts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryDetails_Books" Association="Self.FK_DeliveryDetails_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="DeliveryDetails" EntitySet="DeliveryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryDetails_DeliveryNotes" Association="Self.FK_DeliveryDetails_DeliveryNotes">
+            <End Role="DeliveryNotes" EntitySet="DeliveryNotes" />
+            <End Role="DeliveryDetails" EntitySet="DeliveryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryNotes_Agencies" Association="Self.FK_DeliveryNotes_Agencies">
+            <End Role="Agencies" EntitySet="Agencies" />
+            <End Role="DeliveryNotes" EntitySet="DeliveryNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryNotes_Debts" Association="Self.FK_DeliveryNotes_Debts">
+            <End Role="DeliveryNotes" EntitySet="DeliveryNotes" />
+            <End Role="Debts" EntitySet="Debts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_Books" Association="Self.FK_PaymentDetails_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_Payments" Association="Self.FK_PaymentDetails_Payments">
+            <End Role="Payments" EntitySet="Payments" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_ReceiptNotes" Association="Self.FK_Payments_ReceiptNotes">
+            <End Role="ReceiptNotes" EntitySet="ReceiptNotes" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptDetails_Books" Association="Self.FK_ReceiptDetails_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptDetails_ReceiptNotes" Association="Self.FK_ReceiptDetails_ReceiptNotes">
+            <End Role="ReceiptNotes" EntitySet="ReceiptNotes" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptNotes_Publishers" Association="Self.FK_ReceiptNotes_Publishers">
+            <End Role="Publishers" EntitySet="Publishers" />
+            <End Role="ReceiptNotes" EntitySet="ReceiptNotes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CTyPHSachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Agencies">
+          <Key>
+            <PropertyRef Name="AgencyID" />
+          </Key>
+          <Property Name="AgencyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="agencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="agencyAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="indebted" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="maxdebt" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="BestSellers" Relationship="Self.FK_BestSellers_Agencies" FromRole="Agencies" ToRole="BestSellers" />
+          <NavigationProperty Name="Debts" Relationship="Self.FK_Debts_Agencies" FromRole="Agencies" ToRole="Debts" />
+          <NavigationProperty Name="DeliveryNotes" Relationship="Self.FK_DeliveryNotes_Agencies" FromRole="Agencies" ToRole="DeliveryNotes" />
+        </EntityType>
+        <EntityType Name="BestSellers">
+          <Key>
+            <PropertyRef Name="BookID" />
+            <PropertyRef Name="AgencyID" />
+          </Key>
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="AgencyID" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Agencies" Relationship="Self.FK_BestSellers_Agencies" FromRole="BestSellers" ToRole="Agencies" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_BestSellers_Books" FromRole="BestSellers" ToRole="Books" />
+        </EntityType>
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PublisherID" Type="Int32" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="receiptPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="BestSellers" Relationship="Self.FK_BestSellers_Books" FromRole="Books" ToRole="BestSellers" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_Books_Categories" FromRole="Books" ToRole="Categories" />
+          <NavigationProperty Name="Publishers" Relationship="Self.FK_Books_Publishers" FromRole="Books" ToRole="Publishers" />
+          <NavigationProperty Name="DeliveryDetails" Relationship="Self.FK_DeliveryDetails_Books" FromRole="Books" ToRole="DeliveryDetails" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK_PaymentDetails_Books" FromRole="Books" ToRole="PaymentDetails" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK_ReceiptDetails_Books" FromRole="Books" ToRole="ReceiptDetails" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Books_Categories" FromRole="Categories" ToRole="Books" />
+        </EntityType>
+        <EntityType Name="Debts">
+          <Key>
+            <PropertyRef Name="DebtID" />
+          </Key>
+          <Property Name="DebtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="creatorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_dl" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryNoteID" Type="Int32" Nullable="false" />
+          <Property Name="thanhtoan" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Agencies" Relationship="Self.FK_Debts_Agencies" FromRole="Debts" ToRole="Agencies" />
+          <NavigationProperty Name="DeliveryNotes" Relationship="Self.FK_DeliveryNotes_Debts" FromRole="Debts" ToRole="DeliveryNotes" />
+        </EntityType>
+        <EntityType Name="DeliveryDetails">
+          <Key>
+            <PropertyRef Name="DeliveryNoteID" />
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="DeliveryNoteID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_DeliveryDetails_Books" FromRole="DeliveryDetails" ToRole="Books" />
+          <NavigationProperty Name="DeliveryNotes" Relationship="Self.FK_DeliveryDetails_DeliveryNotes" FromRole="DeliveryDetails" ToRole="DeliveryNotes" />
+        </EntityType>
+        <EntityType Name="DeliveryNotes">
+          <Key>
+            <PropertyRef Name="DeliveryNoteID" />
+          </Key>
+          <Property Name="DeliveryNoteID" Type="Int32" Nullable="false" />
+          <Property Name="deliverDateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="receiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="deliverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AgencyID" Type="Int32" Nullable="false" />
+          <Property Name="totalPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="debt" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="endeliverdate" Type="DateTime" Precision="0" />
+          <Property Name="thanhtoan" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Agencies" Relationship="Self.FK_DeliveryNotes_Agencies" FromRole="DeliveryNotes" ToRole="Agencies" />
+          <NavigationProperty Name="Debts" Relationship="Self.FK_DeliveryNotes_Debts" FromRole="DeliveryNotes" ToRole="Debts" />
+          <NavigationProperty Name="DeliveryDetails" Relationship="Self.FK_DeliveryDetails_DeliveryNotes" FromRole="DeliveryNotes" ToRole="DeliveryDetails" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="creatorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReceiptNoteID" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK_PaymentDetails_Payments" FromRole="Payments" ToRole="PaymentDetails" />
+          <NavigationProperty Name="ReceiptNotes" Relationship="Self.FK_Payments_ReceiptNotes" FromRole="Payments" ToRole="ReceiptNotes" />
+        </EntityType>
+        <EntityType Name="Publishers">
+          <Key>
+            <PropertyRef Name="PublisherID" />
+          </Key>
+          <Property Name="PublisherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="publisherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="publisherAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="publisherTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="publisherAccountID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Books_Publishers" FromRole="Publishers" ToRole="Books" />
+          <NavigationProperty Name="ReceiptNotes" Relationship="Self.FK_ReceiptNotes_Publishers" FromRole="Publishers" ToRole="ReceiptNotes" />
+        </EntityType>
+        <EntityType Name="ReceiptDetails">
+          <Key>
+            <PropertyRef Name="ReceiptNoteID" />
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="ReceiptNoteID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="receiptAmount" Type="Int32" Nullable="false" />
+          <Property Name="totalPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_ReceiptDetails_Books" FromRole="ReceiptDetails" ToRole="Books" />
+          <NavigationProperty Name="ReceiptNotes" Relationship="Self.FK_ReceiptDetails_ReceiptNotes" FromRole="ReceiptDetails" ToRole="ReceiptNotes" />
+        </EntityType>
+        <EntityType Name="ReceiptNotes">
+          <Key>
+            <PropertyRef Name="ReceiptNoteID" />
+          </Key>
+          <Property Name="ReceiptNoteID" Type="Int32" Nullable="false" />
+          <Property Name="receiptDateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PublisherID" Type="Int32" Nullable="false" />
+          <Property Name="senderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="receiptName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="totalPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="subid" Type="Int32" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_Payments_ReceiptNotes" FromRole="ReceiptNotes" ToRole="Payments" />
+          <NavigationProperty Name="Publishers" Relationship="Self.FK_ReceiptNotes_Publishers" FromRole="ReceiptNotes" ToRole="Publishers" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK_ReceiptDetails_ReceiptNotes" FromRole="ReceiptNotes" ToRole="ReceiptDetails" />
+        </EntityType>
+        <EntityType Name="PaymentDetails">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+            <PropertyRef Name="BookID" />
+            <PropertyRef Name="amount" />
+            <PropertyRef Name="price" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_PaymentDetails_Books" FromRole="PaymentDetails" ToRole="Books" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_PaymentDetails_Payments" FromRole="PaymentDetails" ToRole="Payments" />
+        </EntityType>
+        <Association Name="FK_BestSellers_Agencies">
+          <End Role="Agencies" Type="Self.Agencies" Multiplicity="1" />
+          <End Role="BestSellers" Type="Self.BestSellers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agencies">
+              <PropertyRef Name="AgencyID" />
+            </Principal>
+            <Dependent Role="BestSellers">
+              <PropertyRef Name="AgencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Debts_Agencies">
+          <End Role="Agencies" Type="Self.Agencies" Multiplicity="1" />
+          <End Role="Debts" Type="Self.Debts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agencies">
+              <PropertyRef Name="AgencyID" />
+            </Principal>
+            <Dependent Role="Debts">
+              <PropertyRef Name="id_dl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryNotes_Agencies">
+          <End Role="Agencies" Type="Self.Agencies" Multiplicity="1" />
+          <End Role="DeliveryNotes" Type="Self.DeliveryNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agencies">
+              <PropertyRef Name="AgencyID" />
+            </Principal>
+            <Dependent Role="DeliveryNotes">
+              <PropertyRef Name="AgencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BestSellers_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="BestSellers" Type="Self.BestSellers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="BestSellers">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Publishers">
+          <End Role="Publishers" Type="Self.Publishers" Multiplicity="0..1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publishers">
+              <PropertyRef Name="PublisherID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="PublisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryDetails_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="DeliveryDetails" Type="Self.DeliveryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="DeliveryDetails">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptDetails_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryNotes_Debts">
+          <End Role="DeliveryNotes" Type="Self.DeliveryNotes" Multiplicity="1" />
+          <End Role="Debts" Type="Self.Debts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryNotes">
+              <PropertyRef Name="DeliveryNoteID" />
+            </Principal>
+            <Dependent Role="Debts">
+              <PropertyRef Name="DeliveryNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryDetails_DeliveryNotes">
+          <End Role="DeliveryNotes" Type="Self.DeliveryNotes" Multiplicity="1" />
+          <End Role="DeliveryDetails" Type="Self.DeliveryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryNotes">
+              <PropertyRef Name="DeliveryNoteID" />
+            </Principal>
+            <Dependent Role="DeliveryDetails">
+              <PropertyRef Name="DeliveryNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_Payments">
+          <End Role="Payments" Type="Self.Payments" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payments">
+              <PropertyRef Name="PaymentID" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_ReceiptNotes">
+          <End Role="ReceiptNotes" Type="Self.ReceiptNotes" Multiplicity="1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptNotes">
+              <PropertyRef Name="ReceiptNoteID" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="ReceiptNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptNotes_Publishers">
+          <End Role="Publishers" Type="Self.Publishers" Multiplicity="1" />
+          <End Role="ReceiptNotes" Type="Self.ReceiptNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publishers">
+              <PropertyRef Name="PublisherID" />
+            </Principal>
+            <Dependent Role="ReceiptNotes">
+              <PropertyRef Name="PublisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptDetails_ReceiptNotes">
+          <End Role="ReceiptNotes" Type="Self.ReceiptNotes" Multiplicity="1" />
+          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptNotes">
+              <PropertyRef Name="ReceiptNoteID" />
+            </Principal>
+            <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="ReceiptNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CTyPHSachEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agencies" EntityType="Self.Agencies" />
+          <EntitySet Name="BestSellers" EntityType="Self.BestSellers" />
+          <EntitySet Name="Books" EntityType="Self.Books" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="Debts" EntityType="Self.Debts" />
+          <EntitySet Name="DeliveryDetails" EntityType="Self.DeliveryDetails" />
+          <EntitySet Name="DeliveryNotes" EntityType="Self.DeliveryNotes" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" />
+          <EntitySet Name="Publishers" EntityType="Self.Publishers" />
+          <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetails" />
+          <EntitySet Name="ReceiptNotes" EntityType="Self.ReceiptNotes" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" />
+          <AssociationSet Name="FK_BestSellers_Agencies" Association="Self.FK_BestSellers_Agencies">
+            <End Role="Agencies" EntitySet="Agencies" />
+            <End Role="BestSellers" EntitySet="BestSellers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Debts_Agencies" Association="Self.FK_Debts_Agencies">
+            <End Role="Agencies" EntitySet="Agencies" />
+            <End Role="Debts" EntitySet="Debts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryNotes_Agencies" Association="Self.FK_DeliveryNotes_Agencies">
+            <End Role="Agencies" EntitySet="Agencies" />
+            <End Role="DeliveryNotes" EntitySet="DeliveryNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BestSellers_Books" Association="Self.FK_BestSellers_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="BestSellers" EntitySet="BestSellers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Categories" Association="Self.FK_Books_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Publishers" Association="Self.FK_Books_Publishers">
+            <End Role="Publishers" EntitySet="Publishers" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryDetails_Books" Association="Self.FK_DeliveryDetails_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="DeliveryDetails" EntitySet="DeliveryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_Books" Association="Self.FK_PaymentDetails_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptDetails_Books" Association="Self.FK_ReceiptDetails_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryNotes_Debts" Association="Self.FK_DeliveryNotes_Debts">
+            <End Role="DeliveryNotes" EntitySet="DeliveryNotes" />
+            <End Role="Debts" EntitySet="Debts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryDetails_DeliveryNotes" Association="Self.FK_DeliveryDetails_DeliveryNotes">
+            <End Role="DeliveryNotes" EntitySet="DeliveryNotes" />
+            <End Role="DeliveryDetails" EntitySet="DeliveryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_Payments" Association="Self.FK_PaymentDetails_Payments">
+            <End Role="Payments" EntitySet="Payments" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_ReceiptNotes" Association="Self.FK_Payments_ReceiptNotes">
+            <End Role="ReceiptNotes" EntitySet="ReceiptNotes" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptNotes_Publishers" Association="Self.FK_ReceiptNotes_Publishers">
+            <End Role="Publishers" EntitySet="Publishers" />
+            <End Role="ReceiptNotes" EntitySet="ReceiptNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptDetails_ReceiptNotes" Association="Self.FK_ReceiptDetails_ReceiptNotes">
+            <End Role="ReceiptNotes" EntitySet="ReceiptNotes" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CTyPHSachModelStoreContainer" CdmEntityContainer="CTyPHSachEntities">
+          <EntitySetMapping Name="Agencies">
+            <EntityTypeMapping TypeName="CTyPHSachModel.Agencies">
+              <MappingFragment StoreEntitySet="Agencies">
+                <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
+                <ScalarProperty Name="agencyName" ColumnName="agencyName" />
+                <ScalarProperty Name="agencyAddress" ColumnName="agencyAddress" />
+                <ScalarProperty Name="indebted" ColumnName="indebted" />
+                <ScalarProperty Name="maxdebt" ColumnName="maxdebt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BestSellers">
+            <EntityTypeMapping TypeName="CTyPHSachModel.BestSellers">
+              <MappingFragment StoreEntitySet="BestSellers">
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="CTyPHSachModel.Books">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="receiptPrice" ColumnName="receiptPrice" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="CTyPHSachModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Debts">
+            <EntityTypeMapping TypeName="CTyPHSachModel.Debts">
+              <MappingFragment StoreEntitySet="Debts">
+                <ScalarProperty Name="DebtID" ColumnName="DebtID" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="creatorName" ColumnName="creatorName" />
+                <ScalarProperty Name="id_dl" ColumnName="id_dl" />
+                <ScalarProperty Name="DeliveryNoteID" ColumnName="DeliveryNoteID" />
+                <ScalarProperty Name="thanhtoan" ColumnName="thanhtoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryDetails">
+            <EntityTypeMapping TypeName="CTyPHSachModel.DeliveryDetails">
+              <MappingFragment StoreEntitySet="DeliveryDetails">
+                <ScalarProperty Name="DeliveryNoteID" ColumnName="DeliveryNoteID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryNotes">
+            <EntityTypeMapping TypeName="CTyPHSachModel.DeliveryNotes">
+              <MappingFragment StoreEntitySet="DeliveryNotes">
+                <ScalarProperty Name="DeliveryNoteID" ColumnName="DeliveryNoteID" />
+                <ScalarProperty Name="deliverDateCreated" ColumnName="deliverDateCreated" />
+                <ScalarProperty Name="receiverName" ColumnName="receiverName" />
+                <ScalarProperty Name="deliverName" ColumnName="deliverName" />
+                <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
+                <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+                <ScalarProperty Name="debt" ColumnName="debt" />
+                <ScalarProperty Name="endeliverdate" ColumnName="endeliverdate" />
+                <ScalarProperty Name="thanhtoan" ColumnName="thanhtoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="CTyPHSachModel.Payments">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="creatorName" ColumnName="creatorName" />
+                <ScalarProperty Name="ReceiptNoteID" ColumnName="ReceiptNoteID" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publishers">
+            <EntityTypeMapping TypeName="CTyPHSachModel.Publishers">
+              <MappingFragment StoreEntitySet="Publishers">
+                <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+                <ScalarProperty Name="publisherName" ColumnName="publisherName" />
+                <ScalarProperty Name="publisherAdd" ColumnName="publisherAdd" />
+                <ScalarProperty Name="publisherTel" ColumnName="publisherTel" />
+                <ScalarProperty Name="publisherAccountID" ColumnName="publisherAccountID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptDetails">
+            <EntityTypeMapping TypeName="CTyPHSachModel.ReceiptDetails">
+              <MappingFragment StoreEntitySet="ReceiptDetails">
+                <ScalarProperty Name="ReceiptNoteID" ColumnName="ReceiptNoteID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="receiptAmount" ColumnName="receiptAmount" />
+                <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptNotes">
+            <EntityTypeMapping TypeName="CTyPHSachModel.ReceiptNotes">
+              <MappingFragment StoreEntitySet="ReceiptNotes">
+                <ScalarProperty Name="ReceiptNoteID" ColumnName="ReceiptNoteID" />
+                <ScalarProperty Name="receiptDateCreated" ColumnName="receiptDateCreated" />
+                <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+                <ScalarProperty Name="senderName" ColumnName="senderName" />
+                <ScalarProperty Name="receiptName" ColumnName="receiptName" />
+                <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+                <ScalarProperty Name="subid" ColumnName="subid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="CTyPHSachModel.PaymentDetails">
+              <MappingFragment StoreEntitySet="PaymentDetails">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MODEL.phieuchi>
+@{ 
+    int stt = 1;
+}
+<table class="table">
+    <thead>
+        <tr>
+            <td>Số lần</td>
+            <td style="width:50%">Người thu</td>
+            <td>Ngày thanh toán</td>
+            <td>Số tiền</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>Lần @(stt++)</td>
+                <td>@item.nguoithu</td>
+                <td>@item.ngaylap.ToString("dd/MM/yyyy")</td>
+                <td>@item.thanhtoan</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CTyPHSachModelStoreContainer" CdmEntityContainer="CTyPHSachEntities">
+    <EntitySetMapping Name="Agencies">
+      <EntityTypeMapping TypeName="CTyPHSachModel.Agencies">
+        <MappingFragment StoreEntitySet="Agencies">
+          <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
+          <ScalarProperty Name="agencyName" ColumnName="agencyName" />
+          <ScalarProperty Name="agencyAddress" ColumnName="agencyAddress" />
+          <ScalarProperty Name="indebted" ColumnName="indebted" />
+          <ScalarProperty Name="maxdebt" ColumnName="maxdebt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BestSellers">
+      <EntityTypeMapping TypeName="CTyPHSachModel.BestSellers">
+        <MappingFragment StoreEntitySet="BestSellers">
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="CTyPHSachModel.Books">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="bookName" ColumnName="bookName" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="receiptPrice" ColumnName="receiptPrice" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="CTyPHSachModel.Categories">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Debts">
+      <EntityTypeMapping TypeName="CTyPHSachModel.Debts">
+        <MappingFragment StoreEntitySet="Debts">
+          <ScalarProperty Name="DebtID" ColumnName="DebtID" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="creatorName" ColumnName="creatorName" />
+          <ScalarProperty Name="id_dl" ColumnName="id_dl" />
+          <ScalarProperty Name="DeliveryNoteID" ColumnName="DeliveryNoteID" />
+          <ScalarProperty Name="thanhtoan" ColumnName="thanhtoan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryDetails">
+      <EntityTypeMapping TypeName="CTyPHSachModel.DeliveryDetails">
+        <MappingFragment StoreEntitySet="DeliveryDetails">
+          <ScalarProperty Name="DeliveryNoteID" ColumnName="DeliveryNoteID" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryNotes">
+      <EntityTypeMapping TypeName="CTyPHSachModel.DeliveryNotes">
+        <MappingFragment StoreEntitySet="DeliveryNotes">
+          <ScalarProperty Name="DeliveryNoteID" ColumnName="DeliveryNoteID" />
+          <ScalarProperty Name="deliverDateCreated" ColumnName="deliverDateCreated" />
+          <ScalarProperty Name="receiverName" ColumnName="receiverName" />
+          <ScalarProperty Name="deliverName" ColumnName="deliverName" />
+          <ScalarProperty Name="AgencyID" ColumnName="AgencyID" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="debt" ColumnName="debt" />
+          <ScalarProperty Name="endeliverdate" ColumnName="endeliverdate" />
+          <ScalarProperty Name="thanhtoan" ColumnName="thanhtoan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="CTyPHSachModel.Payments">
+        <MappingFragment StoreEntitySet="Payments">
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="creatorName" ColumnName="creatorName" />
+          <ScalarProperty Name="ReceiptNoteID" ColumnName="ReceiptNoteID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publishers">
+      <EntityTypeMapping TypeName="CTyPHSachModel.Publishers">
+        <MappingFragment StoreEntitySet="Publishers">
+          <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+          <ScalarProperty Name="publisherName" ColumnName="publisherName" />
+          <ScalarProperty Name="publisherAdd" ColumnName="publisherAdd" />
+          <ScalarProperty Name="publisherTel" ColumnName="publisherTel" />
+          <ScalarProperty Name="publisherAccountID" ColumnName="publisherAccountID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReceiptDetails">
+      <EntityTypeMapping TypeName="CTyPHSachModel.ReceiptDetails">
+        <MappingFragment StoreEntitySet="ReceiptDetails">
+          <ScalarProperty Name="ReceiptNoteID" ColumnName="ReceiptNoteID" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="receiptAmount" ColumnName="receiptAmount" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReceiptNotes">
+      <EntityTypeMapping TypeName="CTyPHSachModel.ReceiptNotes">
+        <MappingFragment StoreEntitySet="ReceiptNotes">
+          <ScalarProperty Name="ReceiptNoteID" ColumnName="ReceiptNoteID" />
+          <ScalarProperty Name="receiptDateCreated" ColumnName="receiptDateCreated" />
+          <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+          <ScalarProperty Name="senderName" ColumnName="senderName" />
+          <ScalarProperty Name="receiptName" ColumnName="receiptName" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+          <ScalarProperty Name="subid" ColumnName="subid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentDetails">
+      <EntityTypeMapping TypeName="CTyPHSachModel.PaymentDetails">
+        <MappingFragment StoreEntitySet="PaymentDetails">
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,333 @@
+﻿@model MODEL.phieuxuat
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section js{
+<script type="text/javascript">
+    var sachs = [];
+
+    var phieunhap = {
+        dangki: function () {
+            phieunhap.sukhien();
+        },
+        sukhien: function () {
+            $(".add-sach").click(function () {
+                var id = $(this).parent("td").parent("tr").data("id");
+                var name = $(this).parent("td").parent("tr").find("td:eq(1)").html();
+                var gia = $(this).parent("td").parent("tr").find("td:eq(2)").html();
+                var slt = $(this).parent("td").parent("tr").find("td:eq(3)").html();
+                var sl = 0;
+                var sach = {
+                    "masach": id,
+                    "ten": name,
+                    "gia": gia,
+                    "slt": slt,
+                    "sl":sl
+                }
+                var dem = 0;
+                for(var i=0;i<sachs.length;i++){
+                    if (sachs[i].masach == sach.masach) {
+                        dem++;
+                    }
+                }
+                if (dem == 0) {
+                    sachs.push(sach);
+                }
+                //load detail phieu xuat
+                var text = "";
+                for (var i = 0; i < sachs.length; i++) {
+                    text += "<tr><td>" + sachs[i].masach + "</td>" +
+                    "<td>" + sachs[i].ten + "</td>" +
+                    "<td>" + sachs[i].gia + "</td>" +
+                    "<td>" + sachs[i].slt + "</td>" +
+                    "<td><input type='number' /></td>" +
+                    "<td><a class='remove-book'><span class='glyphicon glyphicon-remove'>Bỏ</span></a></td></tr>";
+                }
+                $(".table-phieuxuat").find("tbody").html(text);
+                phieunhap.dangki();
+
+            });
+            $(".remove-book").click(function () {
+                var tongtien = 0;
+                var text = "";
+                var id = $(this).parent("td").parent("tr").find("td:eq(0)").html();
+                for (var i = 0; i < sachs.length; i++) {
+                    if (sachs[i].masach == id) {
+                        sachs.splice(i, 1);
+                    }
+                }
+                for (var i = 0; i < sachs.length; i++) {
+                    if (sachs[i].sl == "") {
+                        sachs[i].sl = 0;
+                    }
+                    tongtien = tongtien + (sachs[i].gia * sachs[i].sl);
+                }
+                $("#giatri").val(tongtien);
+                console.log(sachs);
+                for (var i = 0; i < sachs.length; i++) {
+                    text += "<tr><td>" + sachs[i].masach + "</td>" +
+                    "<td>" + sachs[i].ten + "</td>" +
+                    "<td>" + sachs[i].gia + "</td>" +
+                    "<td>" + sachs[i].slt + "</td>" +
+                    "<td><input type='number' value='" + sachs[i].sl+ "' /></td>" +
+                    "<td><a class='remove-book'><span class='glyphicon glyphicon-remove'>Bỏ</span></a></td></tr>";
+                }
+                $(".table-phieuxuat").find("tbody").html(text);
+                phieunhap.dangki();
+            });
+            $("#timkiemsach").off("click").on("click", function () {
+                var ten = $("#ten").val();
+                $.ajax({
+                    url: '/PhieuXuat/Sach',
+                    dataType: 'html',
+                    data: {
+                        "ten":ten,
+                    },
+                    success: function (data) {
+                        $('.table-sach').html(data);
+                        phieunhap.sukhien();
+                    }
+                });
+
+            });
+            $(".table-phieuxuat tbody tr input").keyup(function () {
+                var tongtien = 0;
+                var sl = $(this).val();
+                if (sl == "") {
+                    sl = 0;
+                }
+                var id = $(this).parent("td").parent("tr").find("td:eq(0)").html();
+                var gia = $(this).parent("td").parent("tr").find("td:eq(2)").html();
+                for (var i = 0;i< sachs.length;i++){
+                    if (sachs[i].masach == id) {
+                        sachs[i].sl = sl;
+                    }
+                }
+                for (var i = 0; i < sachs.length; i++) {
+                    if (sachs[i].sl == "") {
+                        sachs[i].sl = 0;
+                    }
+                    tongtien =tongtien +(sachs[i].gia * sachs[i].sl);
+                }
+                $("#giatri").val(tongtien);
+            });
+            $("#bt_tao").off("click").on("click", function () {
+                if (sachs.length == 0 ) {
+                    return;
+                }
+                var ngayxuat = $("#ngayxuat").val();
+                var nguoitao =$("#nguoitao").val();
+                var nguoigia =$("#nguoigia").val();
+                var id_dl = $("#id_dl").val();
+                var hanthanhtoan = $("#hanthanhtoan").val();
+                var giatri = $("#giatri").val();
+                var thanhtoan = $("#thanhtoan").val();
+                var frm = $('#formphieunhap');
+               
+                var lsach = [];
+                var dem = 0;
+                $('.table-phieuxuat tbody tr').each(function () {
+                    var id = $(this).find("td:eq(0)").html();
+                    var name = $(this).find("td:eq(1)").html();
+                    var gia = $(this).find("td:eq(2)").html();
+                    var sl = $(this).find("td:eq(4)").find("input").val();
+                    var sach = {
+                        "masach": id,
+                        "ten": name,
+                        "gia": gia,
+                        "sl": sl
+                    };
+                    lsach.push(sach);
+                });
+                frm.off("submit").on("submit", function (e) {
+                    e.preventDefault();
+                    $.ajax({
+                        url: frm.attr("action"),
+                        type: frm.attr("method"),
+                        data: {
+                            "ngayxuat": ngayxuat,
+                            "nguoitao": nguoitao,
+                            "nguoigia": nguoigia,
+                            "id_dl": id_dl,
+                            "giatri": giatri,
+                            "hanthanhtoan": hanthanhtoan,
+                            "thanhtoan":thanhtoan,
+                            "chitiet": lsach
+                        },
+                        success: function (data) {
+                            if (data==1) {
+                                alert("hết hàng");
+                            }
+                            if (data == 2) {
+                                alert("vượt quá mức nợ");
+                            }
+                            if (data == 3) {
+                                alert("thêm thành công");
+                            }
+                            if (data == 4) {
+                                alert("thêm thất bại");
+                            }
+                            phieunhap.dangki();
+                        }
+                    })
+                });
+                phieunhap.dangki();
+            });
+        },
+    };
+    phieunhap.dangki();
+</script>
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/PhieuXuat/Index">Danh Sách</a>
+    </li>
+    <li class="breadcrumb-item active">Tạo phiếu xuất</li>
+</ol>
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i>
+        Thao tác
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form name="formphieunhap" id="formphieunhap" action="/PhieuXuat/Create" method="post">
+                    <div class="row">
+                        <div class="form-inline col-md-4">
+                            <label class="col-md-3">Mã</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="id" id="id" />
+                            </div>
+
+                        </div>
+                        <div class="form-inline col-md-4">
+                            <label class="col-md-3">N.Xuất</label>
+                            <div class="col-md-9">
+                                <input type="date" class="form-control" name="ngayxuat" id="ngayxuat" />
+                            </div>
+                        </div>
+                        <div class="form-inline col-md-4">
+                            <label class="col-md-3">N.Nhận</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="nguoitao" id="nguoitao" />
+                            </div>
+                        </div>
+                    </div>     
+                    <br />
+                    <div class="row">
+                        <div class="form-inline col-md-4">
+                            <label class="col-md-3">N.Giao</label>
+                            <div class="col-md-9">
+                                <input type="text"  class="form-control" name="nguoigia" id="nguoigia" />
+                            </div>
+                         </div>
+                        <div class="form-inline col-md-4">
+                            <label class="col-md-3">Đai lý</label>
+                            <div class="col-md-9">
+                                @Html.DropDownListFor(model => model.id_dl, null, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-inline col-md-4">
+                            <label class="col-md-3">T.tiền</label>
+                            <div class="col-md-9">
+                                <input type="number"  class="form-control" name="giatri" id="giatri" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="form-inline col-md-4">
+                            <label class="col-md-3">H.T.Toán</label>
+                            <div class="col-md-9">
+                                <input type="date" class="form-control" name="hanthanhtoan" id="hanthanhtoan" />
+                            </div>
+                        </div>
+                        <div class="form-inline col-md-4">
+                            <label class="col-md-3">T.Toán</label>
+                            <div class="col-md-9">
+                                <input type="number" class="form-control" name="thanhtoan" id="thanhtoan" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                        <div class="row">
+                            <div class="col-md-12" style="text-align:center">
+                                <button class="btn btn-primary" id="bt_tao">Tạo</button>
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">T.Sách</button>
+                            </div>
+                        </div>
+</form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i>
+       Danh sách
+    </div>
+    <div class="card-body">
+        <div class="table-phieuxuat">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Mã</td>
+                        <td style="width:50%">Tên</td>
+                        <td>Giá</td>
+                        <td>SL.Tồn</td>
+                        <td>SL.Nhập</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Sách</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row" >
+                    <div class="col-md-12">
+                        <div class="form-inline">
+                            <label class="col-md-3">Tên</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="ten" />
+                            </div>
+                            <div class="col-md-3">
+                                <button id="timkiemsach" class="btn btn-primary">Tìm kiếm</button>
+                            </div>
+                           
+                        </div>
+                    </div>
+                   
+                </div>
+                   
+                <div class="table-sach" style="margin-top:15px;">
+                    
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
